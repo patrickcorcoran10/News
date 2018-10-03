@@ -2,7 +2,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
-var News = require("./models/News.js");
+// var News = require("./models/News.js");
+// var Note = require("./models/Note.js");
 
 // Scraping Tools
 
@@ -56,19 +57,18 @@ app.get("/scrape", function(req, res) {
                 link: link
                 });
             });
-            console.log(results);
+            // console.log(results);
     db.News.create(results)
         .then(function(dbNews) {
-            console.log(dbNews);
+            res.send(dbNews);
         })
         .catch(function(err) {
             return res.json(err);
         })
-    res.send("Scrape Complete");
 });
 });
 // GET Route to Post Articles to the Page
-app.get("/news", function(req, res) {
+app.get("/", function(req, res) {
     db.News.find({})
         .then(function(dbNews) {
             res.json(dbNews);
@@ -76,7 +76,8 @@ app.get("/news", function(req, res) {
         .catch(function(err) {
             res.json(err);
         });
-        res.send("news page");
+    res.send("news page");
+
 });
 // GET Route to find Specific Article by _id and Populate with Note
 app.get("/news/:id", function(req, res) {
@@ -92,7 +93,7 @@ app.get("/news/:id", function(req, res) {
 
 // POST Route for saving/updating an article's assiciated Note
 app.post("/news/:id", function(req, res) {
-    db.News.create(req.body)
+    db.Note.create(req.body)
     .then(function(dbNote) {
         return db.News.findOneAndUpdate({ _id: req.params.id}, { note: dbNote._id }, { new: true });
     })
@@ -103,15 +104,6 @@ app.post("/news/:id", function(req, res) {
         res.json(err);
     });
 });
-
-    
-    
-    
-    
-
-
-
-
 app.listen(PORT, function() {
     console.log("App running on port " + PORT + ".");
 });

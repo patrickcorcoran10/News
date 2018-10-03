@@ -16,10 +16,10 @@ var NewsSchema = new Schema({
     //     type: String,
     //     required: true
     // },
-    // note: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "Note"
-    // }
+    note: {
+        type: Schema.Types.ObjectId,
+        ref: "Note"
+    }
 });
 
 var News = mongoose.model("News", NewsSchema);
