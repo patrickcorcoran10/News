@@ -51,6 +51,10 @@ $(document).on("click", "p", function() {
   
   // When you click the savenote button
   $(document).on("click", "#savenote", function() {
+
+    // $.ajax({{
+    //     method: "UPDATE"
+    // }})
     // Grab the id associated with the article from the submit button
     var thisId = $(this).attr("data-id");
   
