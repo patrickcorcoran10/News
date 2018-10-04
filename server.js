@@ -30,6 +30,10 @@ app.use(express.static("public"));
 
 // // Connect to the Mongo DB
 mongoose.connect("mongodb://localhost/newsApp", { useNewUrlParser: true });
+
+var express = require("express");
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
 // Scraping Function
     
 // Routes
