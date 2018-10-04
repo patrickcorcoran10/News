@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/newsApp", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/newsApp", { useNewUrlParser: true });
 
 var express = require("express");
 mongoose.Promise = Promise;
