@@ -49,7 +49,7 @@ app.get("/", function(req, res) {
 
 // GET Route to scraping the CapitolFax website
 app.get("/scrape", function(req, res) {
-    request("https://www.capitolfax.com", function(error, response, html) {
+    request("http://www.capitolfax.com", function(error, response, html) {
 
             var $ = cheerio.load(html);
 
